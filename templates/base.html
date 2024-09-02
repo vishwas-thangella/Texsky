@@ -1,0 +1,133 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'App.css' %}">
+    <link rel="shortcut icon" href="{% static '/Assets/logos/logo.png' %}" type="image/x-icon">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="{% static 'script.js' %}"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    height: {
+                        nav: '85px'
+                    },
+                    colors: {
+                        nav: 'rgb(21,20,20)',
+                        base_blue: '#87DDFD',
+                        base_gray: '#8E8E8E'
+                    },
+                    width: {
+                        "500": "500px"
+                    },
+                    fontSize: {
+                        base_main: "48px",
+                    }
+                }
+            }
+        }
+    </script>
+    <title>Texsky</title>
+</head>
+
+<body>
+    <nav class="w-full md:h-nav h-16 bg-nav flex flex-row items-center md:pl-16 p-5 justify-between" data-aos="fade-in">
+        <span class="material-symbols-outlined md:hidden text-4xl text-white" onclick="SidebarOpen()">
+            menu
+        </span>
+        <h1 class="aldrich text-white md:navtitle text-3xl">TEXSKY</h1>
+        <div class="md:flex flex-row items-center gap-7 md:pr-10 hidden">
+            <h1 class="aldrich text-white hidden xl:block">Home</h1>
+            <a href="#about"><h1 class="aldrich text-white hidden md:block">About us</h1></a>
+            <h1 class="aldrich text-white hidden md:block">Services</h1>
+            <h1 class="aldrich text-white hidden md:block">Technologies</h1>
+            <h1 class="aldrich text-white hidden xl:block">Products</h1>
+            <button
+                class="aldrich text-white border bg-nav border-white rounded-xl p-4 hover:text-black hover:bg-white transition-all hidden md:block">Get
+                Quote</button>
+        </div>
+    </nav>
+    <div class="sidebar w-[200px] fixed top-0 z-20 bg-black h-full p-2 pl-2 flex flex-col gap-5" id="sidebar">
+        <h1 class="text-right" onclick="SidebarClose()"><span
+                class="material-symbols-outlined text-white font-bold text-4xl cursor-pointer">close</span></h1>
+        <div class="flex flex-row items-center gap-2">
+            <span class="material-symbols-outlined text-white text-3xl">home</span>
+            <h1 class="text-base_gray text-xl">Home</h1>
+        </div>
+        <div class="flex flex-row items-center gap-2">
+            <span class="material-symbols-outlined text-white text-3xl">info</span>
+            <h1 class="text-base_gray text-xl">About us</h1>
+        </div>
+        <div class="flex flex-row items-center gap-2">
+            <span class="material-symbols-outlined text-white text-3xl">integration_instructions</span>
+            <h1 class="text-base_gray text-xl">Services</h1>
+        </div>
+        <div class="flex flex-row items-center gap-2">
+            <span class="material-symbols-outlined text-white text-3xl">code</span>
+            <h1 class="text-base_gray text-xl">Technologies</h1>
+        </div>
+        <div class="flex flex-row items-center gap-2">
+            <span class="material-symbols-outlined text-white text-3xl">inventory_2</span>
+            <h1 class="text-base_gray text-xl">Products</h1>
+        </div>
+    </div>
+    {% block body %}{% endblock body %}
+    <footer class='text-white aldrich bg-nav'>
+        <span class="text-xl">
+            <h2 class="p-5 text-3xl ">TEXSKY</h2>
+        </span>
+        <div class="grid md:grid-cols-4 md:place-items-center">
+            <div class="about p-4 w-">
+                <h3>About Us</h3>
+                <p class="text-base_gray">we specialize in crafting high-quality web and mobile applications that drive
+                    innovation and efficiency. we're dedicated to helping your business succeed in the digital
+                    landscape.</p>
+            </div>
+            <div class="Services p-4">
+                <h3>Our Services</h3>
+                <p class="text-base_gray">Web Applications</p>
+                <p class="text-base_gray">Mobile Applications</p>
+                <p class="text-base_gray">UI/UX Designs</p>
+                <p class="text-base_gray">Digital Marketing</p>
+                <p class="text-base_gray">Desktop Applications</p>
+            </div>
+            <div class="Links p-4">
+                <h3>Links</h3>
+                <p class="text-base_gray">Home</p>
+                <p class="text-base_gray">Our Recent Projects</p>
+                <p class="text-base_gray">Technologies</p>
+                <p class="text-base_gray">Products</p>
+                <p class="text-base_gray">Other Sevices</p>
+
+            </div>
+            <div>
+                <div class="Touch p-4">
+                    <h3>Get In Touch</h3>
+                    <p class="text-base_gray">Call : +91 9494021850</p>
+                    <p class="text-base_gray">Email : textsky24@gmail.com</p>
+                </div>
+                <div class="follow mt-2 p-4">
+                    <h3>Follow Us</h3>
+                    <div class="logos flex gap-5 mt-2 ">
+                        <img src="{% static '/Assets/logos/ig.png' %}" alt="" class="w-10 rounded-full">
+                        <img src="{% static '/Assets/logos/fb.png' %}" alt="" class="w-10 rounded-full">
+                        <img src="{% static '/Assets/logos/x.jpg' %}" alt="" class="w-10 rounded-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        AOS.init({ duration: 1000, easing: 'ease-in-out', offset: 150 });
+    </script>
+</body>
+</html>
